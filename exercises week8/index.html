@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript</title>
+
+</head>
+<body>
+	<div id="myName">
+	</div>
+
+	
+	
+	<script>
+	var userName = prompt("What is your user name?");
+	userName.addEventListener("onload",getName);
+	function getName(){
+		document.getElementById("myName").innerHTML = userName;
+		}
+	</script>
+	
+</body>
+</html>
