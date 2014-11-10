@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript</title>
+</head>
+<body>
+	<form class="cart" id="cart-oil">
+		<div class="item">
+			<h2>Extra Virgin, Cold-Pressed</h2>
+			<p>You've never tasted olive oil this delicious.</p>
+			<div class="info">
+				<span>Price: $10/bottle</span>
+			</div>
+			<div class="order">
+				<label for="txt-q-extra">Quantity desired:</label>
+				<input type="text" id="txt-q-extra" size="3" placeholder="0">
+			</div>
+		</div>
+		<div class="item">
+			<h2>Cold-Pressed</h2>
+			<p>Ideal for Cooking</p>
+			<div class="info">
+				<span>Price: $8/bottle</span>
+			</div>
+			<div class="order">
+				<label for="txt-q-cold">Quantity desired:</label>
+				<input type="text" id="txt-q-cold" size="3" placeholder="0">
+			</div>
+		</div>
+		<div class="item">
+			<h2>Garlic-infused</h2>
+			<p>If you love garlic, this is the one for you</p>
+			<div class="info">
+				<span>Price: $10/bottle</span>
+			</div>
+			<div class="order">
+				<label for="txt-q-garlic">Quantity desired:</label>
+				<input type="text" id="txt-q-garlic" size="3" placeholder="0">
+			</div>
+		</div>
+		
+		<div id="summary">
+			<h2>Estimate Order</h2>
+			<div class="group state">
+				<label for="s-state">State</label>
+				<select id="s-state">
+					<option value="">- select -</option>
+					<option value="dublin">Dublin(7.5% tax)</option>
+					<option value="cork">Cork</option>
+					<option value="belfast">Belfast</option>
+				</select>
+			</div>
+			<div class="group method">
+				<label for="r-method-pickup">Shipping Method:</label></br>
+				
+				<input type="radio" value="pickup" name="r_method" id="r-method-pickup" checked>
+				<label for="r-method-pickup">Pickup (free)</label></br>
+				
+				<input type="radio" value="standard" name="r_method" id="r-method-standard">
+				<label for="r-method-standard">Standard ($2/bottle)</label></br>
+				
+				<input type="radio" value="register" name="r_method" id="r-method-register">
+				<label for="r-method-register">Register ($3/bottle)</label>
+			</div>
+			<div class="group special">
+				<label for="c-special-gift">Special:</label></br>
+				
+				<input type="checkbox" value="YES" id="c-special-gift">
+				<label for="c-special-gift">This is a gift</label></br>
+				
+				<input type="checkbox" value="YES" id="c-special-gold">
+				<label for="c-special-gift">Use gold-flecked bottles</label></br>
+				
+				<input type="checkbox" value="YES" id="c-special-cork">
+				<label for="c-special-cork">Use plastic caps instead of cork</label>
+			</div>
+			<div class="group calc">
+				<p>
+				<label for="btn-estimate">Click to estimate:</label>
+				<input type="submit" value="Estimate Total" id="btn-estimate">
+				<input type="text" id="txt-estimate" placeholder="$0.00">
+				</p>
+				<div id="results"></div>
+			</div>	
+		</div>	
+	</form>
+	<script>
+		document.getElementById('cart-oil').addEventListener('submit', estimateTotal);
+		function estimateTotal(event){
+			event.preventDefault();
+			if(document.getElementById('s-state').value === ''){
+				alert("Please choose your shipping statement");
+				document.getElementById('s-tate').focus();
+			}
+			var btlExtra = document.getElementById('txt-q-extra').value,
+				btlCold = document.getElementById('txt-q-cold').value,
+				btlGarlic = document.getElementById('txt-q-garlic').value, 
+				state = document.getElementById('s-state').value;
+			
+			var methods = document.getElementById('cart-oil').r_method,
+				shippingMethod;
+			for(var i = 0; i < methods.length; i ++){
+				if(methods[i].checked == true){
+					shippingMethod = methods [i].value;
+				}
+			}
+			console.log(btlExtra);
+			console.log(btlCold);
+			console.log(btlGarlic);
+			console.log(state);
+			console.log(shippingMethod);
+			
+		}
+	</script>
+</body>
+</html>
